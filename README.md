@@ -1,13 +1,10 @@
-# Alia – Humanoid Design | Sito Web
+# Alia – Humanoid Design | Website
 
-Sito web statico multilingue per il progetto Alia – Humanoid Design, progettato per essere ospitato su GitHub Pages.
+Static website for the Alia – Humanoid Design project, designed to be hosted on GitHub Pages.
 
-## 🌐 Versioni Linguistiche
+## 🌐 Language
 
-- **🇬🇧 Inglese (default)**: `index.html`
-- **🇮🇹 Italiano**: `index-it.html`
-
-Language switcher integrato nell'header per passare facilmente tra le versioni.
+**English-only** - All content is provided in English to ensure consistency across communication channels and accessibility to the global robotics community.
 
 ## 🚀 Deploy su GitHub Pages
 
@@ -17,18 +14,16 @@ Language switcher integrato nell'header per passare facilmente tra le versioni.
 4. Seleziona branch "main" e cartella "/ (root)"
 5. Il sito sarà disponibile all'indirizzo: `https://[username].github.io/[repo-name]`
 
-## 📁 Struttura del progetto
+## 📁 Project Structure
 
 ```
 /
-├── index.html          # Homepage inglese (default)
-├── index-it.html       # Homepage italiana
-├── style.css           # CSS principale condiviso
-├── README.md           # Documentazione
+├── index.html          # Main landing page
+├── style.css           # Styles and responsive design
+├── README.md           # Documentation
 └── assets/
-    ├── logo.png        # Logo Alia (PNG trasparente)
-    ├── hero.png        # Robot wireframe hero image
-    └── gamba_trasparente.png  # Placeholder esploso gamba
+    ├── logo.png        # Alia logo (transparent PNG)
+    └── hero.png        # Wireframe hero image
 ```
 
 ## 🎨 Design System
@@ -57,43 +52,72 @@ Language switcher integrato nell'header per passare facilmente tra le versioni.
 - **YouTube**: https://www.youtube.com/@aliahumanoid  
 - **X (Twitter)**: https://x.com/aliahumanoid
 
-## ✅ Caratteristiche implementate
+## ✅ Features
 
-- [x] **Multilingue**: Inglese (default) e Italiano con switcher
-- [x] **Single-page design**: Hero + 4 sezioni (About, Approach, Media, Contact)
-- [x] **Design responsive**: Mobile-first, ottimizzato per tutti i dispositivi
-- [x] **Navigazione smooth**: Scroll automatico alle sezioni
-- [x] **Sfondo sfumato**: Gradiente dinamico da scuro a chiaro
-- [x] **SEO ottimizzato**: Meta tags, alt text, structure semantica
-- [x] **Accessibilità**: ARIA labels, focus states, contrast ottimale
-- [x] **Performance**: CSS ottimizzato, animazioni smooth
-- [x] **Branding coerente**: Logo PNG, social links, footer fisso
+- [x] **Single-page design**: Hero + 5 sections (About, Approach, Roadmap, Media, Contact)
+- [x] **Responsive design**: Mobile-first, optimized for all devices
+- [x] **Smooth navigation**: Automatic scroll to sections
+- [x] **SEO optimized**: Meta tags, alt text, semantic structure
+- [x] **Accessibility**: ARIA labels, focus states, optimal contrast
+- [x] **Performance**: Optimized CSS, smooth animations
+- [x] **Consistent branding**: Logo, social links, fixed footer
+- [x] **Phase 0 banner**: Transparent research project disclaimer
 
-## 🛠️ Personalizzazioni
+## 🎯 Content Focus
 
-Per modificare contenuti, colori o layout, modifica:
-- **Testi**: Direttamente nei file HTML
-- **Colori**: Variabili CSS in `:root` nel file `style.css`
-- **Font**: Modifica l'import Google Fonts nel CSS
+### Hero Section
+- **Title**: "Building Humanoid Mechanics Inside Real Human Proportions"
+- **Subtitle**: "That's what we're working on."
+- **Description**: Accurate dimensions, mechanics hidden inside, no compromises
 
-## 🎉 Stato del Progetto
+### Technical Focus
+- **Real Human Proportions**: Anatomical dimensions as primary constraint
+- **Tendon-Driven Actuation**: Cable-routed torque, bio-inspired systems
+- **Transparent Documentation**: Iterative work, no shortcuts
 
-✅ **COMPLETO E PRONTO PER IL DEPLOY**
+### Progressive Roadmap
+- **Phase 0** (now): Limited files, restricted license, transparent docs
+- **Phase 1** (~6 months): Full CAD, open license
+- **Phase 2+** (TBD): Public governance, community-driven
 
-Il sito è completamente funzionale con:
-- Due versioni linguistiche complete (EN/IT)
-- Design responsive ottimizzato
-- Tutte le sezioni implementate
-- Navigazione smooth funzionante
-- Assets grafici integrati
+## 🛠️ Customization
 
-### 📱 Preview
-- **Desktop**: Layout a due colonne con hero image prominente
-- **Mobile**: Layout verticale ottimizzato
-- **Language switcher**: Disponibile in header
-- **Sezioni**: Hero → About → Approach → Media → Contact
+To modify content, colors, or layout:
+- **Text**: Edit directly in `index.html`
+- **Colors**: CSS variables in `:root` in `style.css`
+- **Fonts**: Modify Google Fonts import in CSS
+
+## 📋 Changelog
+
+### 2025-10-06 - Content Refinement & Visual Optimization
+- ✅ Hero section optimization
+  - Condensed headline: "Humanoid Mechanics / Inside Human Proportions"
+  - Strategic line break for improved readability
+  - Typography refinement: reduced visual weight, optimized font sizes
+  - Enhanced subtitle with action-oriented phrasing
+- ✅ Technical focus section: highlighted tendon-driven actuation approach
+- ✅ Roadmap updates: adjusted timelines to reflect current project status
+- ✅ Media section: added social media links and content descriptions
+- ✅ Layout improvements: centered roadmap grid on desktop displays
+
+### 2025-10-05 - Initial Release
+- ✅ Single-page website with hero + 5 sections
+- ✅ Responsive mobile-first design
+- ✅ Phase 0 research project positioning
+
+## 🎉 Status
+
+✅ **READY FOR DEPLOY**
+
+Website fully functional with:
+- Clear messaging aligned with public communication strategy
+- Technical accuracy and engineering-focused tone
+- Tendon-driven actuation highlighted as key differentiator
+- Transparent Phase 0 research project positioning
+- Progressive licensing roadmap
+- Responsive design optimized for all devices
 
 ---
 
 **Alia – Humanoid Design**  
-*Where anatomy meets robotics. | Dove l'anatomia incontra la robotica.* 
+*Mechanics. Form. Motion.* 
