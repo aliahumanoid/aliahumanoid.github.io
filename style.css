@@ -696,6 +696,17 @@ html {
   color: var(--color-bg);
 }
 
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-bg);
+  border: 2px solid var(--color-bg);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
 .btn-play {
   width: 60px;
   height: 60px;

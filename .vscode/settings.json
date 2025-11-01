@@ -1,0 +1,12 @@
+{
+  "liveServer.settings.port": 5500,
+  "liveServer.settings.root": "/",
+  "liveServer.settings.CustomBrowser": "chrome",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotVerifyTags": true,
+  "html.format.wrapLineLength": 120,
+  "html.format.indentInnerHtml": true,
+  "css.lint.unknownAtRules": "ignore",
+  "editor.formatOnSave": false
+}
+

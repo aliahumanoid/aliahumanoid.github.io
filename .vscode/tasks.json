@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Python HTTP Server",
+      "type": "shell",
+      "command": "python3 -m http.server 8000",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "runOptions": {
+        "instanceLimit": 1
+      }
+    },
+    {
+      "label": "Stop Python HTTP Server",
+      "type": "shell",
+      "command": "pkill -f 'python3 -m http.server 8000'",
+      "problemMatcher": []
+    }
+  ]
+}
+
