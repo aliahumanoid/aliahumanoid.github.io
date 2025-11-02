@@ -483,14 +483,7 @@ html {
   border-radius: 12px;
   background: linear-gradient(135deg, rgba(26, 35, 50, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
   border: 2px solid rgba(26, 35, 50, 0.1);
-  transition: all 0.3s ease;
   position: relative;
-}
-
-.roadmap-phase:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  border-color: rgba(26, 35, 50, 0.3);
 }
 
 .phase-number {
@@ -627,6 +620,11 @@ html {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   margin-bottom: 1.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.hero-photos-grid.hidden {
+  display: none;
 }
 
 .hero-media-bottom {
@@ -652,12 +650,52 @@ html {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
+.hero-photo-item {
+  cursor: pointer;
+}
+
 .hero-photo-item img {
   width: 100%;
   height: auto;
   object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.hero-photo-item:hover img {
+  transform: scale(1.02);
+}
+
+.hero-photo-expanded {
+  display: none;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.hero-photo-expanded.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.hero-photo-expanded img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
+}
+
+.hero-photo-expanded:hover img {
+  transform: scale(1.01);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .hero-media-side {
@@ -692,7 +730,8 @@ html {
 
 .hero-image img {
   width: 100%;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.25)) 
+          drop-shadow(0 0 1px rgba(0, 0, 0, 0.2));
   max-width: 350px;
   height: auto;
   object-fit: contain;
@@ -1040,10 +1079,12 @@ footer {
   .btn-group {
     flex-direction: column;
     width: 100%;
+    align-items: center;
   }
   
   .btn {
     width: 100%;
+    max-width: 400px;
     justify-content: center;
   }
   

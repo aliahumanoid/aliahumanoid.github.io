@@ -65,18 +65,32 @@
                 </div>
                 
                 <div class="hero-photos-grid">
-                    <div class="hero-photo-item">
+                    <div class="hero-photo-item" data-photo="1">
                         <img src="assets/lower-leg-human-scale.png" alt="Lower leg assembly - human scale comparison" />
                     </div>
-                    <div class="hero-photo-item">
+                    <div class="hero-photo-item" data-photo="2">
                         <img src="assets/ankle-assembly-isometric.png" alt="Ankle assembly - isometric view" />
                     </div>
-                    <div class="hero-photo-item">
+                    <div class="hero-photo-item" data-photo="3">
                         <img src="assets/human-scale-overlay-lateral.png" alt="Human scale overlay - lateral view" />
                     </div>
-                    <div class="hero-photo-item">
+                    <div class="hero-photo-item" data-photo="4">
                         <img src="assets/ankle-cutaway-internal.png" alt="Ankle cutaway - internal mechanisms" />
                     </div>
+                </div>
+                
+                <!-- Expanded photo views -->
+                <div id="expanded-1" class="hero-photo-expanded" onclick="closeExpanded()">
+                    <img src="assets/lower-leg-human-scale.png" alt="Lower leg assembly - human scale comparison" />
+                </div>
+                <div id="expanded-2" class="hero-photo-expanded" onclick="closeExpanded()">
+                    <img src="assets/ankle-assembly-isometric.png" alt="Ankle assembly - isometric view" />
+                </div>
+                <div id="expanded-3" class="hero-photo-expanded" onclick="closeExpanded()">
+                    <img src="assets/human-scale-overlay-lateral.png" alt="Human scale overlay - lateral view" />
+                </div>
+                <div id="expanded-4" class="hero-photo-expanded" onclick="closeExpanded()">
+                    <img src="assets/ankle-cutaway-internal.png" alt="Ankle cutaway - internal mechanisms" />
                 </div>
                 
                 <div class="hero-media-bottom">
@@ -249,6 +263,36 @@
         navLinks.addEventListener('click', function(e) {
             e.stopPropagation();
         });
+
+        // Espansione immagini hero grid
+        const photoGrid = document.querySelector('.hero-photos-grid');
+        const photoItems = document.querySelectorAll('.hero-photo-item');
+
+        photoItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const photoId = this.getAttribute('data-photo');
+                
+                // Nascondi la grid
+                photoGrid.classList.add('hidden');
+                
+                // Mostra l'immagine espansa
+                const expandedView = document.getElementById('expanded-' + photoId);
+                expandedView.classList.add('active');
+            });
+        });
+
+        function closeExpanded() {
+            // Nascondi tutte le immagini espanse
+            document.querySelectorAll('.hero-photo-expanded').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Mostra di nuovo la grid
+            photoGrid.classList.remove('hidden');
+        }
+        
+        // Esponi la funzione a livello globale per onclick
+        window.closeExpanded = closeExpanded;
     </script>
 </body>
 </html> 
