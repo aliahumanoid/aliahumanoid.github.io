@@ -1,9 +1,9 @@
-/* Alia - Humanoid Design | CSS Principale */
+/* Alia - Humanoid Design | Main CSS */
 
-/* Import font Inter da Google Fonts */
+/* Import Inter font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Reset e variabili CSS */
+/* Reset and CSS variables */
 * {
   margin: 0;
   padding: 0;
@@ -56,7 +56,7 @@ p {
   max-width: 65ch;
 }
 
-/* Header e Navigation */
+/* Header and navigation */
 header {
   position: fixed;
   top: 0;
@@ -111,7 +111,7 @@ nav {
   opacity: 0.7;
 }
 
-/* Language links nel menu mobile */
+/* Language links in mobile menu */
 .language-links {
   display: none;
 }
@@ -120,7 +120,7 @@ nav {
   display: none;
 }
 
-/* Menu hamburger */
+/* Hamburger menu */
 .menu-toggle {
   display: none;
   background: none;
@@ -365,14 +365,14 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Container principale */
+/* Main container */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 3rem;
 }
 
-/* Sezioni */
+/* Sections */
 .section {
   padding: 6rem 0;
   background-color: #f8fafc;
@@ -766,6 +766,26 @@ html {
   padding-left: 0.5rem;
 }
 
+.hero-kicker {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  opacity: 0.75;
+  margin-bottom: 1rem;
+}
+
+.hero-kicker a {
+  color: var(--color-bg);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(26, 35, 50, 0.3);
+}
+
+.hero-kicker a:hover {
+  opacity: 0.7;
+}
+
 .hero-content h1 {
   font-size: clamp(2.2rem, 4vw, 3.8rem);
   font-weight: 600;
@@ -788,14 +808,35 @@ html {
 .hero-description {
   font-size: clamp(1.1rem, 1.5vw, 1.3rem);
   line-height: 1.5;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   max-width: 500px;
   font-weight: 400;
   opacity: 0.8;
   color: var(--color-bg);
 }
 
-/* Bottoni */
+.hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+  color: var(--color-bg);
+  opacity: 0.85;
+}
+
+.hero-proof span {
+  position: relative;
+  padding-left: 1rem;
+}
+
+.hero-proof span::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-bg);
+}
+/* Buttons */
 .btn-group {
   display: flex;
   gap: 2rem;
@@ -931,7 +972,7 @@ footer {
   opacity: 0.7;
 }
 
-/* Media queries responsive */
+/* Responsive media queries */
 @media (max-width: 1024px) {
   .hero {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
@@ -984,13 +1025,17 @@ footer {
 
 @media (max-width: 768px) {
   nav {
-    padding: 0.5rem 1.5rem;
+    padding: 0.75rem 1.25rem;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     position: relative;
   }
   
+  .logo img {
+    height: 72px;
+  }
+
   .menu-toggle {
     display: flex;
     position: absolute;
@@ -1066,8 +1111,13 @@ footer {
   
   .hero-container {
     padding: 0 1.5rem;
+    gap: 1.5rem;
   }
   
+  .hero-image {
+    display: none;
+  }
+
   .section {
     padding: 4rem 0;
     scroll-margin-top: 110px;
@@ -1078,6 +1128,31 @@ footer {
     gap: 2rem;
   }
   
+  .hero-kicker {
+    text-align: center;
+    font-size: 0.75rem;
+  }
+
+  .hero-proof {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .hero-proof span {
+    padding-left: 0;
+  }
+
+  .hero-proof span::before {
+    content: none;
+  }
+
+  .btn-group {
+    gap: 1rem;
+  }
+
   .contact-content {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -1094,6 +1169,10 @@ footer {
   .footer-right {
     gap: 2rem;
   }
+
+  footer {
+    position: static;
+  }
   
   main {
     margin-top: 110px;
@@ -1101,6 +1180,10 @@ footer {
 }
 
 @media (max-width: 480px) {
+  .logo img {
+    height: 60px;
+  }
+
   .btn-group {
     flex-direction: column;
     width: 100%;
@@ -1117,9 +1200,14 @@ footer {
     gap: 1.5rem;
     font-size: 0.9rem;
   }
+
+  .hero-photos-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
 }
 
-/* Animazioni */
+/* Animations */
 .fade-in main {
   animation: fadeIn 1s ease-out;
 }
@@ -1135,7 +1223,7 @@ footer {
   }
 }
 
-/* Accessibilità */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -1144,7 +1232,7 @@ footer {
   }
 }
 
-/* Focus states per accessibilità */
+/* Focus states for accessibility */
 .btn:focus,
 a:focus {
   outline: 2px solid var(--color-text);
