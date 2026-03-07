@@ -1,8 +1,8 @@
 # Alia – Humanoid Design | Website
 
-Static website for Alia - Humanoid Design, a Phase 0 research project documenting humanoid mechanics development.
+Static website for Alia - Humanoid Design, focused on Phase 0 public validation of lower-body humanoid mechanics.
 
-**Live URL**: https://aliahumanoid.github.io
+**Live URL**: https://aliahumanoid.com
 
 ## 🚀 Deploy
 
@@ -36,8 +36,9 @@ Hosted on GitHub Pages. Push to `main` branch triggers automatic deployment.
 
 - Single-page responsive design
 - Tendon-driven actuation highlighted as key differentiator
-- Progressive licensing roadmap (Phase 0 → Phase 1 → Phase 2+)
-- Phase 0 research project positioning
+- Phase 0 credibility-first positioning
+- Repository / milestone log / issue-reporting links
+- Release path aligned with current public documentation
 
 ## 🛠️ Development
 
