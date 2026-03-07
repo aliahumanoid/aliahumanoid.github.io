@@ -16,6 +16,9 @@
   --color-accent: #6b7280;
   --color-light: #2a3441;
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --header-offset: 148px;
+  --main-offset: 198px;
+  --section-offset: 150px;
   --transition: all 0.3s ease;
 }
 
@@ -201,7 +204,7 @@ nav {
 /* Phase 0 Banner */
 .phase-banner {
   position: fixed;
-  top: 80px;
+  top: var(--header-offset);
   left: 0;
   right: 0;
   background: linear-gradient(135deg, #1a2332 0%, #2a3441 100%);
@@ -269,7 +272,7 @@ nav {
 /* Tablet portrait & mobile */
 @media (max-width: 1024px) {
   .phase-banner {
-    top: 80px;
+    top: var(--header-offset);
     padding: 0.6rem 0;
   }
   
@@ -291,7 +294,7 @@ nav {
 
 @media (max-width: 768px) {
   .phase-banner {
-    top: 60px;
+    top: var(--header-offset);
     padding: 0.5rem 0;
   }
   
@@ -316,7 +319,7 @@ nav {
 
 @media (max-width: 480px) {
   .phase-banner {
-    top: 60px;
+    top: var(--header-offset);
     padding: 0.4rem 0;
   }
   
@@ -338,26 +341,8 @@ nav {
 
 /* Main content */
 main {
-  margin-top: 190px;
+  margin-top: var(--main-offset);
   margin-bottom: 120px;
-}
-
-@media (max-width: 1024px) {
-  main {
-    margin-top: 180px;
-  }
-}
-
-@media (max-width: 768px) {
-  main {
-    margin-top: 150px;
-  }
-}
-
-@media (max-width: 480px) {
-  main {
-    margin-top: 135px;
-  }
 }
 
 /* Smooth scroll */
@@ -376,7 +361,7 @@ html {
 .section {
   padding: 6rem 0;
   background-color: #f8fafc;
-  scroll-margin-top: 150px;
+  scroll-margin-top: var(--section-offset);
 }
 
 .section-dark {
@@ -1024,6 +1009,12 @@ footer {
 }
 
 @media (max-width: 768px) {
+  :root {
+    --header-offset: 96px;
+    --main-offset: 156px;
+    --section-offset: 160px;
+  }
+
   nav {
     padding: 0.75rem 1.25rem;
     flex-direction: row;
@@ -1120,7 +1111,7 @@ footer {
 
   .section {
     padding: 4rem 0;
-    scroll-margin-top: 110px;
+    scroll-margin-top: var(--section-offset);
   }
   
   .approach-grid {
@@ -1174,12 +1165,15 @@ footer {
     position: static;
   }
   
-  main {
-    margin-top: 110px;
-  }
 }
 
 @media (max-width: 480px) {
+  :root {
+    --header-offset: 84px;
+    --main-offset: 142px;
+    --section-offset: 145px;
+  }
+
   .logo img {
     height: 60px;
   }
