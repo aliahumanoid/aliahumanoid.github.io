@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Notes | Alia – Humanoid Design</title>
+    <meta name="description" content="Engineering method writeups from the Alia humanoid project, published as prior art.">
+    <link rel="canonical" href="https://aliahumanoid.com/notes/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css?v=20260718">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <meta name="theme-color" content="#1a2332">
+    <style>
+        main { margin-top: 90px; }
+        .notes-list { max-width: 760px; margin: 0 auto; padding: 1.5rem; }
+        .notes-list h1 { font-size: 1.8rem; margin-bottom: 0.4rem; }
+        .notes-intro { opacity: 0.8; margin-bottom: 2rem; }
+        .note-entry { padding: 1.2rem 0; border-bottom: 1px solid rgba(127,127,127,0.3); }
+        .note-entry h2 { font-size: 1.15rem; margin-bottom: 0.3rem; }
+        .note-entry p { line-height: 1.6; opacity: 0.9; }
+        .note-date { font-size: 0.85rem; opacity: 0.7; }
+        .note-topbar { display: flex; align-items: center; padding: 1rem 1.5rem; }
+        .note-topbar img { height: 40px; }
+    </style>
+</head>
+<body class="fade-in">
+    <header>
+        <div class="note-topbar">
+            <a href="../index.html" class="logo">
+                <img src="../assets/logo.png" alt="Alia - Humanoid Design" />
+            </a>
+        </div>
+    </header>
+    <main>
+        <div class="notes-list">
+            <h1>Technical Notes</h1>
+            <p class="notes-intro">Engineering method writeups from the project, published openly and
+            deliberately as prior art — so the methods remain free for anyone to use, including us.</p>
+            <div class="note-entry">
+                <h2><a href="deterministic-boot-offset-reconstruction.html">Deterministic boot-time offset reconstruction for antagonistic tendon-driven joints</a></h2>
+                <p class="note-date"><time datetime="2026-07-18">18 July 2026</time></p>
+                <p>Recovering motor-side reference frames after power loss without recalibration:
+                a same-state pretension read plus wrap-count lattice snap, fail-closed by design.
+                Bench evidence from a two-DOF ankle.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

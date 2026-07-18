@@ -5,7 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alia – Humanoid Design | Mechanics. Form. Motion.</title>
     <meta name="description" content="Phase 0 public validation of lower-body humanoid mechanics. Technical progress, evidence, and design logs shared transparently.">
-    <link rel="stylesheet" href="style.css?v=20260307-2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="canonical" href="https://aliahumanoid.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Alia – Humanoid Design | Mechanics. Form. Motion.">
+    <meta property="og:description" content="Phase 0 public validation of lower-body humanoid mechanics. Tendon-driven actuation inside real human proportions — evidence first.">
+    <meta property="og:url" content="https://aliahumanoid.com/">
+    <meta property="og:image" content="https://aliahumanoid.com/assets/human-scale-overlay-lateral.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@AliaHumanoid">
+    <meta name="twitter:title" content="Alia – Humanoid Design">
+    <meta name="twitter:description" content="Phase 0 public validation of lower-body humanoid mechanics. Evidence first.">
+    <meta name="twitter:image" content="https://aliahumanoid.com/assets/human-scale-overlay-lateral.png">
+    <link rel="stylesheet" href="style.css?v=20260718">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
@@ -20,7 +34,7 @@
                 <img src="assets/logo.png" alt="Alia - Humanoid Design" />
             </a>
             
-            <button class="menu-toggle" aria-label="Toggle navigation menu">
+            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -31,6 +45,7 @@
                 <li><a href="#approach">APPROACH</a></li>
                 <li><a href="#roadmap">ROADMAP</a></li>
                 <li><a href="#media">MEDIA</a></li>
+                <li><a href="notes/">NOTES</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
@@ -55,7 +70,7 @@
                     
                     <div class="hero-content">
                         <p class="hero-kicker">
-                            Latest: <a href="https://youtu.be/4jU5Na2z-s8" target="_blank" rel="noopener noreferrer">Joint Design Log #002 (Knee)</a> is live.
+                            Latest: <a href="notes/deterministic-boot-offset-reconstruction.html">Technical note — deterministic boot-time offset reconstruction</a> (Jul 2026).
                         </p>
                         <h1>Humanoid Mechanics<br>Inside Human Proportions</h1>
                         
@@ -64,9 +79,9 @@
                         </p>
 
                         <div class="hero-proof">
-                            <span>Ankle + knee design logs live</span>
-                            <span>Phase 0 lower-body validation</span>
-                            <span>Repository and evidence public</span>
+                            <span>Ankle + knee validated on hardware</span>
+                            <span>Walking: simulation only</span>
+                            <span>Method notes published as prior art</span>
                         </div>
 
                         <div class="btn-group">
@@ -120,15 +135,19 @@
                 
                 <div class="hero-media-bottom">
                     <div class="hero-media-side">
-                        <img src="assets/prototype-photo-full-leg.png" alt="Prototype photo - full leg assembly" />
+                        <img src="assets/prototype-photo-full-leg.jpg" alt="Prototype photo - full leg assembly" loading="lazy" />
                         <p class="media-caption">Full leg prototype assembly</p>
                     </div>
                     <a href="https://youtu.be/1Z9GlTnYEFs" class="hero-media-side media-link" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/ankle-motion-demo.gif" alt="Right ankle prototype - 2-DOF motion test" />
+                        <video autoplay loop muted playsinline preload="metadata" aria-label="Right ankle prototype - 2-DOF motion test">
+                            <source src="assets/ankle-motion-demo.mp4" type="video/mp4">
+                        </video>
                         <p class="media-caption">Right ankle prototype — 2-DOF motion test</p>
                     </a>
                     <a href="https://youtu.be/4jU5Na2z-s8" class="hero-media-side media-link" target="_blank" rel="noopener noreferrer">
-                        <img src="assets/knee-motion-demo.gif" alt="Right knee prototype - 1-DOF motion test" />
+                        <video autoplay loop muted playsinline preload="metadata" aria-label="Right knee prototype - 1-DOF motion test">
+                            <source src="assets/knee-motion-demo.mp4" type="video/mp4">
+                        </video>
                         <p class="media-caption">Right knee prototype — 1-DOF motion test</p>
                     </a>
                 </div>
@@ -139,10 +158,9 @@
         <section id="about" class="section">
             <div class="container">
                 <h2>About Alia</h2>
-                <p><strong>Phase 0 – Public Release (Oct 31, 2025).</strong> Lower-body documentation is public: STL files, electronics board files, joint-controller firmware, host software, and technical specs. The current surface is for reviewing evidence and following validation, not for broad hardware collaboration yet.</p>
-                <p><strong>Joint Design Logs:</strong> <a href="https://youtu.be/1Z9GlTnYEFs" target="_blank" rel="noopener noreferrer">#001 (Ankle)</a> and <a href="https://youtu.be/4jU5Na2z-s8" target="_blank" rel="noopener noreferrer">#002 (Knee)</a> are live with technical breakdowns and validation notes.</p>
-                <p><strong>Technical Notes:</strong> <a href="notes/deterministic-boot-offset-reconstruction.html">Deterministic boot-time offset reconstruction for tendon-driven joints</a> (July 2026).</p>
                 <p>Building humanoid mechanics inside real human proportions is hard. Accurate dimensions. Mechanics hidden inside. No compromises on form. This is not a commercial product; it is iterative engineering work documented in public as the lower body is validated step by step.</p>
+                <p><strong>Evidence:</strong> Joint Design Logs <a href="https://youtu.be/1Z9GlTnYEFs" target="_blank" rel="noopener noreferrer">#001 (Ankle)</a> and <a href="https://youtu.be/4jU5Na2z-s8" target="_blank" rel="noopener noreferrer">#002 (Knee)</a> with technical breakdowns and validation notes · <a href="notes/">Technical notes</a> published as prior art.</p>
+                <p><strong>Phase 0 – public since Oct 31, 2025.</strong> Lower-body documentation is public: STL files, electronics board files, joint-controller firmware, host software, and technical specs. The current surface is for reviewing evidence and following validation, not for broad hardware collaboration yet.</p>
                 <p>Review the <a href="https://github.com/aliahumanoid/alia-humanoid-core" target="_blank" rel="noopener noreferrer">repository on GitHub</a>, read the <a href="https://github.com/aliahumanoid/alia-humanoid-core/blob/main/PUBLIC_UPDATES.md" target="_blank" rel="noopener noreferrer">public milestones</a>, or open an <a href="https://github.com/aliahumanoid/alia-humanoid-core/issues" target="_blank" rel="noopener noreferrer">issue</a> if you have a precise question or finding.</p>
             </div>
         </section>
@@ -201,19 +219,22 @@
             <div class="container">
                 <h2>Documentation & Updates</h2>
                 <p>Phase 0 lower-body material was released on Oct 31, 2025. Joint Design Logs #001 (ankle) and #002 (knee) are live. Current public evidence covers individual ankle and knee validation; the hip firmware path is implemented, but hip bench validation is still pending.</p>
-                <p><strong>Latest:</strong> Joint Design Log #002 (Knee) published on YouTube. <a href="https://youtu.be/4jU5Na2z-s8" target="_blank" rel="noopener noreferrer">Watch video</a> · <a href="https://x.com/AliaHumanoid/status/2015812906101657848" target="_blank" rel="noopener noreferrer">Announcement thread</a>.</p>
+                <p><strong>Latest:</strong> Technical note — <a href="notes/deterministic-boot-offset-reconstruction.html">Deterministic boot-time offset reconstruction for tendon-driven joints</a> (Jul 18, 2026), published as prior art. Previously: first natural walking gait achieved in physics simulation via motion-tracking reinforcement learning (Jun 2026 — simulation results, labeled as such; hardware walking is gated by remaining hardware).</p>
                 <div class="latest-update-card">
                     <div class="latest-update-grid">
                         <a href="https://youtu.be/4jU5Na2z-s8" target="_blank" rel="noopener noreferrer">
-                            <img src="assets/knee-human-scale-overlay-annotated.png" alt="Knee design overlay for Joint Design Log #002" />
+                            <img src="assets/knee-human-scale-overlay-annotated.png" alt="Knee design overlay for Joint Design Log #002" loading="lazy" />
                         </a>
                         <a href="https://youtu.be/4jU5Na2z-s8" target="_blank" rel="noopener noreferrer">
-                            <img src="assets/knee-motion-demo.gif" alt="Knee motion demo for Joint Design Log #002" />
+                            <video autoplay loop muted playsinline preload="metadata" aria-label="Knee motion demo for Joint Design Log #002">
+                                <source src="assets/knee-motion-demo.mp4" type="video/mp4">
+                            </video>
                         </a>
                     </div>
                     <p class="media-caption">Joint Design Log #002 — Knee joint (published Jan 26, 2026)</p>
                 </div>
                 <ul class="media-list">
+                    <li><strong>Technical Notes:</strong> <a href="notes/">Method writeups</a> — Engineering methods published as prior art; latest: boot-time offset reconstruction (Jul 2026)</li>
                     <li><strong>Joint Design Logs:</strong> <a href="https://youtu.be/4jU5Na2z-s8" target="_blank" rel="noopener noreferrer">#002 Knee</a> · <a href="https://youtu.be/1Z9GlTnYEFs" target="_blank" rel="noopener noreferrer">#001 Ankle</a></li>
                     <li><strong>GitHub Repository:</strong> <a href="https://github.com/aliahumanoid/alia-humanoid-core" target="_blank" rel="noopener noreferrer">Repository, docs, and issues</a> — Best place to review current technical state</li>
                     <li><strong>Public Updates:</strong> <a href="https://github.com/aliahumanoid/alia-humanoid-core/blob/main/PUBLIC_UPDATES.md" target="_blank" rel="noopener noreferrer">Milestone log</a> — Historical release notes with current roadmap notes</li>
@@ -284,6 +305,12 @@
             e.stopPropagation(); // Prevent immediate menu close
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+        });
+
+        // Close the expanded photo view with Escape (keyboard accessibility)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeExpanded();
         });
 
         // Close menu when a link is clicked

@@ -1,7 +1,6 @@
 /* Alia - Humanoid Design | Main CSS */
 
 /* Import Inter font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* Reset and CSS variables */
 * {
@@ -1242,3 +1241,11 @@ a:focus {
   outline: 2px solid var(--color-text);
   outline-offset: 2px;
 } 
+
+
+/* Keyboard focus visibility (2026-07-18 a11y pass): outline follows text color so it
+   stays visible on both dark and light sections. */
+a:focus-visible, button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
