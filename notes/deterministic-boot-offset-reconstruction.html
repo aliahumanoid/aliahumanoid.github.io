@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deterministic Boot-Time Offset Reconstruction | Alia – Humanoid Design</title>
+    <meta name="description" content="Technical note: deterministic boot-time offset reconstruction for antagonistic tendon-driven joints. Published as prior art.">
+    <link rel="canonical" href="https://aliahumanoid.com/notes/deterministic-boot-offset-reconstruction.html">
+    <link rel="stylesheet" href="../style.css?v=20260718">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <meta name="theme-color" content="#1a2332">
+    <style>
+        .note-article { max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+        .note-article h1 { font-size: 1.9rem; line-height: 1.25; margin-bottom: 0.5rem; }
+        .note-meta { opacity: 0.75; font-size: 0.9rem; margin-bottom: 2.2rem; }
+        .note-article h2 { font-size: 1.25rem; margin: 2.2rem 0 0.8rem; }
+        .note-article p, .note-article li { line-height: 1.65; margin-bottom: 0.9rem; }
+        .note-article ol li, .note-article ul li { margin-bottom: 0.7rem; margin-left: 1.2rem; }
+        .note-article code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+                            font-size: 0.9em; background: rgba(127,127,127,0.15);
+                            padding: 0.1em 0.35em; border-radius: 4px; }
+        .note-footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid rgba(127,127,127,0.35);
+                       font-size: 0.9rem; opacity: 0.85; }
+        .note-topbar { display: flex; align-items: center; padding: 1rem 1.5rem; }
+        .note-topbar img { height: 40px; }
+    </style>
+</head>
+<body class="fade-in">
+    <header>
+        <div class="note-topbar">
+            <a href="../index.html" class="logo">
+                <img src="../assets/logo.png" alt="Alia - Humanoid Design" />
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <article class="note-article">
+            <h1>Deterministic boot-time offset reconstruction for antagonistic tendon-driven joints</h1>
+            <p class="note-meta">Technical note · Published 18 July 2026 · Alia – Humanoid Design</p>
+
+            <h2>The problem</h2>
+            <p>An antagonistic tendon-driven joint is controlled through motor-side positions that
+            must be referenced to the joint: each motor's angle maps to the joint angle through a
+            calibrated joint&harr;motor map, anchored by per-motor offsets established during
+            calibration. The motors' multi-turn counters reset on power loss. The common
+            workaround — re-running a tensioning calibration at every boot — has two costs: boot
+            time, and <em>anchor variance</em>: each recalibration settles on a slightly different
+            equilibrium (tendon friction/stiction), so the joint's reference frame shifts by a
+            small, uncontrolled amount at every power cycle. That variance contaminates any
+            cross-boot comparison and slowly degrades map fidelity.</p>
+
+            <h2>The observation</h2>
+            <p>Two absolute references survive a power cycle:</p>
+            <ol>
+                <li>the motor's <strong>single-turn</strong> absolute (magnetic) encoder position —
+                only the <em>turn count</em> is lost, not the within-turn angle;</li>
+                <li>the <strong>joint-side absolute encoder</strong>, which never loses its
+                reference.</li>
+            </ol>
+            <p>Through the calibrated map, the joint angle predicts the expected motor angle. The
+            saved calibration anchor therefore differs from a freshly measured naive offset by —
+            ideally — an <strong>integer number of motor turns</strong>.</p>
+
+            <h2>The method</h2>
+            <ol>
+                <li><strong>One-time anchor.</strong> A tensioned calibration establishes per-motor
+                offsets; they are persisted. This anchor is never re-measured at boot again.</li>
+                <li><strong>Same-state read (the key step).</strong> At boot, before measuring
+                anything, the controller re-applies the <em>same tension state</em> used when the
+                anchor was captured, and lets the drivetrain settle briefly. This eliminates the
+                slack take-up term between the anchor's physical state and the boot measurement —
+                a term that is otherwise <em>not modelable</em>, because at zero tension the
+                motor's rest position inside the tendon slack band depends on how the system was
+                last shut down (clean stop, emergency stop, manual handling), not on any constant
+                of the mechanism.</li>
+                <li><strong>Lattice snap.</strong> Compute, per motor, the difference between the
+                freshly measured naive offset (measured motor angle minus map-expected motor angle
+                at the current joint pose) and the saved anchor. Round that difference to the
+                nearest whole motor turn: <code>k = round(delta / turn)</code>, where
+                <code>turn = 360&deg;/gear ratio</code> at the output.</li>
+                <li><strong>Fail-closed acceptance.</strong> Accept only if the residual
+                <code>delta &minus; k&middot;turn</code> is well inside the half-turn ambiguity
+                window (a small fraction of &plusmn;turn/2), and the implied turn count is
+                physically plausible. Otherwise <strong>reject and fall back to the full
+                recalibration</strong> — the method never guesses.</li>
+                <li><strong>Deterministic re-anchor.</strong> On acceptance, the applied offset is
+                <code>saved anchor + k&middot;turn</code> — whole turns added to a bit-identical
+                anchor. A verification re-read against the map closes the loop. The joint's
+                reference frame is therefore <em>identical across power cycles</em> until the next
+                explicit recalibration.</li>
+            </ol>
+
+            <h2>Properties</h2>
+            <ul>
+                <li><strong>Deterministic:</strong> the anchor is never re-measured, so
+                recalibration stiction variance is eliminated from ordinary boots.</li>
+                <li><strong>Fail-closed:</strong> any ambiguity (residual near the half-turn
+                boundary, implausible turn count, invalid sensor state) rejects into the trusted
+                full recalibration.</li>
+                <li><strong>Shutdown-agnostic:</strong> because the read happens in the anchor's
+                own tension state, the method is insensitive to how the system was previously
+                powered down.</li>
+                <li><strong>Self-diagnosing:</strong> the reconstructed turn count doubles as an
+                odometer of what happened while unpowered (e.g., it correctly measured a tendon
+                that had been fully unwound and rewound by hand).</li>
+            </ul>
+
+            <h2>Evidence (bench, July 2026, single ankle joint, two antagonistic DOFs)</h2>
+            <ul>
+                <li>Boot-time reference restoration in ~1.3&nbsp;s vs ~4.6&nbsp;s for the
+                recalibration path, with the residuals observed between 0.03&deg; and 4.5&deg;
+                against a &plusmn;18&deg; ambiguity window, across clean shutdowns,
+                emergency-stop shutdowns, and power-loss events.</li>
+                <li>Recovery of a <strong>ten-full-turn</strong> counter loss (joint hand-swept
+                while unpowered) with the turn count reconstructed exactly.</li>
+                <li>Correct fail-closed rejection of a genuinely ambiguous state (residual
+                mid-window after manual disturbance), falling back to full recalibration without
+                operator intervention.</li>
+            </ul>
+
+            <h2>Why we are publishing this</h2>
+            <p>We publish this method openly and deliberately so that it remains free for anyone
+            to use — including us. This note is intended as prior art. Our firmware implementation
+            of the method is currently part of our private development tree; the method itself, as
+            described above, is sufficient for an independent implementation.</p>
+
+            <div class="note-footer">
+                <p>Alia – Humanoid Design · Published 18 July 2026 ·
+                Canonical URL: <a href="https://aliahumanoid.com/notes/deterministic-boot-offset-reconstruction.html">aliahumanoid.com/notes/deterministic-boot-offset-reconstruction.html</a></p>
+                <p>Replication core (firmware, protocols, hardware docs):
+                <a href="https://github.com/aliahumanoid/alia-humanoid-core" target="_blank" rel="noopener noreferrer">github.com/aliahumanoid/alia-humanoid-core</a></p>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
