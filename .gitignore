@@ -1,3 +1,8 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# Source originals kept locally (replaced by .jpg/.mp4 in git, 2026-07-19)
+assets/prototype-photo-full-leg.png
+assets/ankle-motion-demo.gif
+assets/knee-motion-demo.gif
