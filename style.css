@@ -958,8 +958,17 @@ footer {
   opacity: 0.7;
 }
 
+.footer-legal {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
 /* Responsive media queries */
 @media (max-width: 1024px) {
+  .footer-right {
+    gap: 1.5rem;
+  }
+
   .hero {
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
     min-height: calc(100vh - 180px);
@@ -1167,7 +1176,9 @@ footer {
   }
   
   .footer-right {
-    gap: 2rem;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   footer {
